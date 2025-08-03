@@ -1,7 +1,7 @@
+import { Plus } from 'lucide-react';
 import React, { useState } from 'react';
-import { Search, Plus, Filter } from 'lucide-react';
-import { Product, CartItem } from '../types/Product';
-import { products, categories } from '../data/products';
+import { categories, products } from '../data/products';
+import { CartItem, Product } from '../types/Product';
 
 interface HomeProps {
   cartItems: CartItem[];
@@ -25,45 +25,63 @@ const Home: React.FC<HomeProps> = ({ cartItems, onAddToCart }) => {
 
   return (
     <div className="space-y-8">
-      {/* Header */}
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Welcome to RashanMart</h1>
-        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-          Your trusted neighborhood grocery store offering fresh products at the best prices
-        </p>
-      </div>
-
       {/* Search and Filter */}
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-        <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 h-5 w-5" />
+      <div className="flex flex-col md:flex-row items-center justify-between bg-green-50 p-6 rounded-lg shadow-lg">
+      {/* Left Section */}
+      <div className="md:w-1/2 space-y-4">
+        <h1 className="text-3xl font-bold text-green-700 ">
+          Order your Dairy Groceries
+        </h1>
+        <div className="flex">
           <input
             type="text"
             placeholder="Search products..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 transition-all duration-200"
+            className="w-1/2 pl-10 pr-4 py-3 border border-gray-300 rounded-s"
           />
-        </div>
-
-        <div className="flex items-center space-x-2">
-          <Filter className="h-5 w-5 text-gray-500" />
-          <select
-            value={selectedCategory}
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            className="px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 bg-white"
-          >
-            {categories.map(category => (
-              <option key={category.id} value={category.id}>
-                {category.name}
-              </option>
-            ))}
-          </select>
+          <button className="bg-green-600 text-white px-4 py-2 rounded-r-md hover:bg-green-700">
+            Search
+          </button>
         </div>
       </div>
+        
+        {/* Image*/}
+        <div className="md:w-1/2 flex justify-center mt-4 md:mt-0">
+          <img
+            src="https://png.pngtree.com/thumb_back/fw800/background/20241007/pngtree-fresh-produce-supermarket-line-for-healthy-groceries-in-the-style-of-image_16265827.jpg"
+            alt="Groceries"
+            className="w-full h-auto rounded-lg shadow-md"
+          />
+          </div>
+      </div>
 
+ {/* Shop By Categories Section */}
+      <div className="flex flex-col items-center shadow-md p-6 bg-white rounded-lg mt-8 space-between-items">
+        <h2 className="text-xl font-semibold text-gray-700 mb-6">Shop By Categories</h2>
+        <div className="flex flex-wrap justify-center gap-10 mb-2">
+          {categories.map(category => (
+            <button
+              key={category.id}
+              type="button"
+              onClick={() => setSelectedCategory(category.id)}
+              className={`flex flex-col items-center focus:outline-none transition-all duration-200 ${selectedCategory === category.id ? 'ring-2 ring-emerald-500' : ''}`}
+            >
+              <div className={`w-20 h-20 rounded-full flex items-center justify-center mb-2 shadow-sm transition-all duration-200 ${selectedCategory === category.id ? 'bg-emerald-100' : 'bg-gray-100'}`}>
+                <img
+                  src={category.image}
+                  alt={category.name}
+                  className="w-16 h-16 object-contain rounded-full"
+                />
+              </div>
+              <span className={`text-sm mt-1 ${selectedCategory === category.id ? 'text-emerald-700 font-semibold' : 'text-gray-600'}`}>{category.name}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+      
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 shadow-md p-4 bg-white rounded-lg">
         {filteredProducts.map((product) => (
           <div
             key={product.id}

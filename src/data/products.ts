@@ -84,11 +84,11 @@ export const products: Product[] = [
 ];
 
 export const categories = [
-  { id: 'all', name: 'All Items' },
-  { id: 'grains', name: 'Grains & Cereals' },
-  { id: 'pulses', name: 'Pulses & Legumes' },
-  { id: 'oils', name: 'Oils & Ghee' },
-  { id: 'spices', name: 'Spices & Condiments' },
-  { id: 'vegetables', name: 'Fresh Vegetables' },
-  { id: 'beverages', name: 'Beverages' }
+  { id: 'all', name: 'All Items' , image: 'https://images.pexels.com/photos/723198/pexels-photo-723198.jpeg?auto=compress&cs=tinysrgb&w=500'},
+  { id: 'grains', name: 'Grains & Cereals', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' },
+  { id: 'pulses', name: 'Pulses & Legumes', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' },
+  { id: 'oils', name: 'Oils & Ghee', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' },
+  { id: 'spices', name: 'Spices & Condiments', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' },
+  { id: 'vegetables', name: 'Fresh Vegetables', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' },
+  { id: 'beverages', name: 'Beverages', image: 'https://images.pexels.com/photos/164077/pexels-photo-164077.jpeg?auto=compress&cs=tinysrgb&w=500' }
 ];
